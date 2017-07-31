@@ -8,16 +8,20 @@
   grid-template-rows: 50% 50%;
 
   .Dot {
-    width: 10px; height: 10px;
+    width: 8px; height: 8px;
     margin: 2px 2px;
     border-radius: 50%;
     background: white;
-    border: 1px solid black;
+    border: 2px solid black;
   }
 
   .Dot.Exactly {
     background: black;
   }
-
+  
+  .Dot.Missed {
+    border: 2px solid white;
+    background: rgb(200,200,200);
+  }
 }
 
