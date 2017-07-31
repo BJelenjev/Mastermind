@@ -28,8 +28,7 @@ class CardColorPicker extends PureComponent {
   
   pickerWidget() {
     if(!this.state.isPicking) return null
-    
-    const numColors = this.props.colors.length
+
     const heightStep = 60
     const swatches = this.props.colors.map((colorName, i) => {
       const topPos = (heightStep * (i + 1)) + 'px'
