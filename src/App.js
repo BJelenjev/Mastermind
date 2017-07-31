@@ -5,8 +5,9 @@ import GameUI from './GameUI';
 import BuildGuess from './BuildGuess'
 
 let initialGuesses = [
-  BuildGuess(true, [1,2,3,4], 1, 2, 1),
-  BuildGuess(false, [6,3,1,4], 2, 2, 0)
+  BuildGuess(true,  [1,2,3,4], 1, 2),
+  BuildGuess(false, [6,3,1,4], 2, 2),
+  BuildGuess(true,  [4,6,2,4], 0, 0),
 ]
 
 
@@ -18,7 +19,7 @@ class App extends Component {
           <h2>Guess them colors below</h2>
         </div>
         <main className="App-intro">
-<GameUI guesses={ initialGuesses } colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
+          <GameUI guesses={ initialGuesses } colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
         </main>
       </div>
     );

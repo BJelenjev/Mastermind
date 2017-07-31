@@ -1,7 +1,7 @@
 .GameUI {
   .pickers {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+    grid-template-columns: 40px 40px 40px 40px 40px auto; /* 2 */
   }
 }
 

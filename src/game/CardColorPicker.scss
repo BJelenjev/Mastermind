@@ -1,8 +1,9 @@
+// A single color picker (colored squere including the )
 .CardColorPicker {
   cursor: pointer;
-  
   .swatch {
-    width: 34px;
+    box-shadow: rgb(180,180,180) 2px 2px 4px;
+    width: 32px;
     height: 32px;
     margin-right: 10px;
   }
