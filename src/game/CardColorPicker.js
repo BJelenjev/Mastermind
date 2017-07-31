@@ -19,6 +19,12 @@ class CardColorPicker extends PureComponent {
     this.setState({isPicking: true})
   }
   
+  // When we receive props from "above" it means a selection has been made,
+  // whereby we reset the internal selection as well (back to gray)
+  componentWillReceiveProps(newProps) {
+    this.setState({selectedColorIndex: Number(newProps.selected)})
+  }
+  
   acceptSelection(evt, colorIdx) {
     if(!this.state.isPicking) return
     
