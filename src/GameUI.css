@@ -2,36 +2,6 @@
   box-sizing: border-box;
 }
 
-.ColorSwatch {
-  width: 35px;
-  height: 60px;
-}
-
-.Selecting {
-  border: 2px solid white;
-}
-
-.ColorSwatch.Selecting {
-  border: 2px solid blue;
-}
-
-.Selecting:hover, .ColorSwatch:hover {
-  border: 2px solid black;
-}
-
-.CardColorPicker {
-  padding: 2px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.CardInput {
-}
-
-.GuessUI {
-  
-}
-
 .GuessDisplay .ColorSwatch {
   height: 20px;
   width:  20px;
@@ -39,20 +9,3 @@
   display: inline-block;
 }
 
-.GuessDisplay .Clue {
-  display: inline-block;
-  width: 40px;
-}
-
-.GuessDisplay .Clue .Dot {
-  width: 10px; height: 10px;
-  margin: 2px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid black;
-  display: inline-block;
-}
-
-.GuessDisplay .Clue .Dot.Exactly {
-  background: black;
-}

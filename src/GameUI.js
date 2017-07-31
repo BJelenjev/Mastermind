@@ -1,89 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
+import Clue from './game/Clue'
+import CardColorPicker from './game/CardColorPicker'
+
 import './GameUI.css';
 
 const NUM_CARDS = 4
-
-class CardColorPicker extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isPicking: false,
-      selectedColorIndex: Number(props.selected), // If "undefined" is given it will become 0 (gray)
-    }
-  }
-  
-  expandPicker(evt) {
-    if(this.state.isPicking) return
-    evt.preventDefault()
-    this.setState({isPicking: true})
-  }
-  
-  acceptSelection(evt, colorIdx) {
-    if(!this.state.isPicking) return
-    
-    evt.preventDefault()
-    this.setState({isPicking: false, selectedColorIndex: colorIdx})
-
-    if(this.props.onColorPicked) {
-      this.props.onColorPicked(colorIdx)
-    }
-  }
-
-  pickerWidget() {
-    if(!this.state.isPicking) return null
-    
-    const heightStep = 60
-    const swatches = this.props.colors.map((colorName, i) => {
-      const topPos = (heightStep * (i + 1)) + 'px'
-      const s =  {backgroundColor: colorName, position: 'absolute', top: topPos}
-      const acceptSelectionFunction = (event) => this.acceptSelection(event, i)
-      return <div key={ i } 
-        onClick={ acceptSelectionFunction }
-        className="ColorSwatch Selecting" style={ s }>
-        </div>
-    })
-    
-    return swatches
-  }
-  
-  render() {
-    const {colors} = this.props
-    const {selectedColorIndex} = this.state
-    
-    const s =  {backgroundColor: colors[selectedColorIndex], position: 'relative'}
-    return (
-      <div className="CardColorPicker" onClick={this.expandPicker.bind(this) } >
-        <div className="ColorSwatch Current" style={s}/>
-        { this.pickerWidget() }
-      </div>
-    )
-  }
-}
-
-class Clue extends PureComponent {
-  render() {
-    const {numExact, numApprox} = this.props
-    const exactDots = Array(Number(numExact)).fill(null).map((_, i) => {
-      return <div key={i} className="Dot Exactly" />
-    })
-    const looselyDots = Array(Number(numApprox)).fill(null).map((_, i) => {
-      return <div key={i} className="Dot Loosely" />
-    })
-    
-    return(
-      <div className="Clue">
-        {exactDots }
-        {looselyDots }
-      </div>
-    )
-  }
-}
-
-Clue.propTypes = {
-  numExact: PropTypes.number.isRequired,
-  numApprox: PropTypes.number.isRequired,
-}
 
 class GuessDisplay extends PureComponent {
   render() {
@@ -110,8 +33,9 @@ class GameUI extends PureComponent {
 
   submitGuess() {
     const selection = [].concat(this.state.selectedColorIndices)
-    // Reset the selected colors back to gray cards
-    // TODO: this should be picked up by the widgets themselves via props, duuh
+    // Reset the selected colors back to gray cards. On next render
+    // the color selection widgets are going to pick these values up
+    // and reset themselves to gray
     this.setState({selectedColorIndices: Array(NUM_CARDS).fill(0)})
     
     if(this.props.onGuess) this.props.onGuess(selection)
