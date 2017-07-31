@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './CardColorPicker.css'
 
+const SWATCH_HEIGHT_STEP = 32
+
 class CardColorPicker extends PureComponent {
   constructor(props) {
     super(props)
@@ -31,9 +33,8 @@ class CardColorPicker extends PureComponent {
   pickerSwatches() {
     if(!this.state.isPicking) return null
     
-    const heightStep = 60
     const swatches = this.props.colors.map((colorName, i) => {
-      const topPos = (heightStep * (i + 1)) + 'px'
+      const topPos = (SWATCH_HEIGHT_STEP * (i + 1)) + 'px'
       const s =  {backgroundColor: colorName, position: 'absolute', top: topPos}
       const acceptSelectionFunction = (event) => this.acceptSelection(event, i)
       return <div key={ i } onClick={ acceptSelectionFunction } className="swatch" style={ s } />
