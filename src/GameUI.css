@@ -1,0 +1,30 @@
+.GameUI * {
+  box-sizing: border-box;
+}
+
+.ColorSwatch {
+  width: 35px;
+  height: 60px;
+}
+
+.Selecting {
+  border: 2px solid white;
+}
+
+.ColorSwatch.Selecting {
+  border: 2px solid blue;
+}
+
+.Selecting:hover, .ColorSwatch:hover {
+  border: 2px solid black;
+}
+
+.CardColorPicker {
+  padding: 2px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.CardInput {
+}
