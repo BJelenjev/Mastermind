@@ -44,8 +44,8 @@ class CardColorPicker extends PureComponent {
       const s =  {backgroundColor: colorName, position: 'absolute', top: topPos}
       const acceptSelectionFunction = (event) => this.acceptSelection(event, i)
       return <div key={ i }
-                  onClick={ acceptSelectionFunction }
                   className="swatch"
+                  onClick={ acceptSelectionFunction }
                   style={ s } />
     })
     
@@ -56,12 +56,10 @@ class CardColorPicker extends PureComponent {
     const {colors} = this.props
     const {selectedColorIndex} = this.state
     
-    const s =  {backgroundColor: colors[selectedColorIndex]}
-    const abs = {position: 'absolute'}
     return (
       <div className="CardColorPicker" onClick={this.expandPicker.bind(this) } >
-        <div className="swatch" style={s}/>
-        <div className="variants" style={ abs }>
+        <div className="swatch" style={ {backgroundColor: colors[selectedColorIndex]} }/>
+        <div className="variants" style={ {position: 'absolute'} }>
           { this.pickerSwatches() }
         </div>
       </div>
