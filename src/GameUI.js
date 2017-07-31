@@ -46,7 +46,7 @@ class GameUI extends PureComponent {
     
     return (
       <div className="GameUI">
-        <div className="CardColorPicker">
+        <div className="pickers">
           { selectableSwatches }
         </div>
         <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">Try!</button>

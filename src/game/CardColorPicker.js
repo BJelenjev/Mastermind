@@ -28,7 +28,7 @@ class CardColorPicker extends PureComponent {
     }
   }
 
-  pickerWidget() {
+  pickerSwatches() {
     if(!this.state.isPicking) return null
     
     const heightStep = 60
@@ -49,8 +49,8 @@ class CardColorPicker extends PureComponent {
     const s =  {backgroundColor: colors[selectedColorIndex], position: 'relative'}
     return (
       <div className="CardColorPicker" onClick={this.expandPicker.bind(this) } >
-        <div className="ColorSwatch Current" style={s}/>
-        { this.pickerWidget() }
+        <div className="swatch actuator" style={s}/>
+        { this.pickerSwatches() }
       </div>
     )
   }
