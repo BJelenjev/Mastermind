@@ -1,0 +1,3 @@
+exclude = "{$exclude,*.css,node_modules}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$extraExcludes,log,vendor,tmp,stats,node_modules}"
+excludeInFileChooser = "{$exclude,$excludeInFolderSearch}"
