@@ -75,11 +75,13 @@ class GameUI extends PureComponent {
       return <CardColorPicker key={ cardIdx } colorSelected={selected} colors={ this.props.colors } />
     })
     const selectionsMade = NUM_CARDS
+    const combinationEntryComplete = this.state.selectedColors.filter((v) => v === 0).length === 0
     return (
       <div className="GameUI">
         <div className="CardColorPicker">
           { selectableSwatches }
         </div>
+        <button onClick={ this.submitGuess.bind(this) } disabled={ !combinationEntryComplete} className="SubmitGuess">Try!</button>
       </div>
     );
   }
