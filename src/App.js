@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 
 import GameUI from './GameUI';
-import Guess from './Guess'
+import BuildGuess from './BuildGuess'
 
 let initialGuesses = [
-  Guess(true, [1,2,3,4], 1, 2, 1),
-  Guess(false, [6,3,1,4], 2, 2, 0)
+  BuildGuess(true, [1,2,3,4], 1, 2, 1),
+  BuildGuess(false, [6,3,1,4], 2, 2, 0)
 ]
 
 
