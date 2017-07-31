@@ -1,7 +1,12 @@
 .GameUI {
   .pickers-and-try {
+    margin: 0 auto 10px auto;
     display: grid;
-    grid-template-columns: 40px 40px 40px 40px 80px; /* 2 */
+    grid-template-columns: auto 40px 40px 40px 40px 40px auto;
+  }
+  
+  .pickers-and-try > *:nth-child(1) {
+    grid-column-start: 2;
   }
 }
 

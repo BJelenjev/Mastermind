@@ -2,10 +2,10 @@
 .CardColorPicker {
   cursor: pointer;
   .swatch {
-    box-shadow: rgb(180,180,180) 2px 2px 4px;
     width: 32px;
     height: 32px;
     margin-right: 10px;
+    box-shadow: rgb(180,180,180) 2px 2px 4px;
   }
 
   .swatch.Selecting {

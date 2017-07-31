@@ -48,11 +48,8 @@ class GameUI extends PureComponent {
       <div className="GameUI">
         <div className="pickers-and-try">
           { selectableSwatches }
-          <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
-            Make a guess
-          </button>
+          <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">🎲</button>
         </div>
-        <hr />
         { guesses }
       </div>
     );
