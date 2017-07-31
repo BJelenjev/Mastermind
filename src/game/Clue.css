@@ -1,15 +1,17 @@
 .Clue {
-  display: inline-block;
-  width: 40px;
+  width: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 */
+  grid-template-rows: 1f 1f; /* 3 */
+  padding: 2px;
 }
 
 .Clue .Dot {
   width: 10px; height: 10px;
-  margin: 2px;
+  margin: 2px 2px;
   border-radius: 50%;
   background: white;
   border: 1px solid black;
-  display: inline-block;
 }
 
 .Clue .Dot.Exactly {
