@@ -1,29 +1,14 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Clue from './game/Clue'
 import CardColorPicker from './game/CardColorPicker'
+import Guess from './game/Guess'
 
 import './GameUI.css';
 
 const NUM_CARDS = 4
 
-class GuessDisplay extends PureComponent {
-  render() {
-    const {colors, combination, numExact, numApprox} = this.props
-    const swatches = combination.map((ci, i) => {
-      return <div key={ i } className="ColorSwatch" style={ {backgroundColor: colors[ci]} } />
-    })
-    return(
-      <div className="GuessDisplay">
-        <div className="Swatches">
-          {swatches}
-        </div>
-        <Clue numExact={numExact} numApprox={numApprox} />
-      </div>
-    )
-  }
-}
+
 
 class GameUI extends PureComponent {
   constructor(props) {
@@ -56,7 +41,7 @@ class GameUI extends PureComponent {
     const doneSelecting = this.state.selectedColorIndices.filter((v) => v === 0).length === 0
 
     const guesses = this.props.guesses.map((guess, i) => {
-      return <GuessDisplay key={i} colors={ colors } {...guess} />
+      return <Guess key={i} colors={ colors } {...guess} />
     })
     
     return (
