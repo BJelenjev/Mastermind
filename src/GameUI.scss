@@ -8,5 +8,16 @@
   .pickers-and-try > *:nth-child(1) {
     grid-column-start: 2;
   }
+  
+  button { // Only guess button atm
+    cursor: pointer;
+    border: none;
+    background: white;
+    box-shadow: rgb(180,180,180) 2px 2px 4px;
+  }
+
+  button:disabled { // Only guess button atm
+    background: rgb(180,180,180);
+  }
 }
 
