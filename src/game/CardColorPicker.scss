@@ -1,22 +1,24 @@
-.ColorSwatch {
-  width: 35px;
-  height: 60px;
-}
-
-.Selecting {
-  border: 2px solid white;
-}
-
-.ColorSwatch.Selecting {
-  border: 2px solid rgb(210,210,210);
-}
-
-.ColorSwatch.Selecting:hover, .ColorSwatch:hover {
-  border: 2px solid white;
-}
-
 .CardColorPicker {
-  padding: 2px;
-  display: inline-block;
-  cursor: pointer;
+  .ColorSwatch {
+    width: 35px;
+    height: 60px;
+  }
+
+  .Selecting {
+    border: 2px solid white;
+  }
+
+  .swatch.Selecting {
+    border: 2px solid rgb(210,210,210);
+  }
+
+  .swatch.Selecting:hover {
+    border: 2px solid white;
+  }
+
+  .CardColorPicker {
+    padding: 2px;
+    display: inline-block;
+    cursor: pointer;
+  }
 }

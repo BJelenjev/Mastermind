@@ -1,0 +1,14 @@
+.Guess {
+  display: grid;
+  grid-template-columns: auto 40px 40px 40px 40px 40px auto; /* 2 */
+
+  .swatch {
+    width: 34px;
+    height: 32px;
+    margin-right: 10px;
+  }
+  
+  .swatch:nth-child(1) {
+    grid-column-start: 2;
+  }
+}

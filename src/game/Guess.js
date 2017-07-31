@@ -7,13 +7,11 @@ class Guess extends PureComponent {
   render() {
     const {colors, combination, numExact, numApprox} = this.props
     const swatches = combination.map((ci, i) => {
-      return <div key={ i } className="ColorSwatch" style={ {backgroundColor: colors[ci]} } />
+      return <div key={ i } className="swatch" style={ {backgroundColor: colors[ci]} } />
     })
     return(
       <div className="Guess">
-        <div className="Swatches">
-          {swatches}
-        </div>
+        {swatches}
         <Clue numExact={numExact} numApprox={numApprox} />
       </div>
     )

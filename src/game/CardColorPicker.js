@@ -36,10 +36,7 @@ class CardColorPicker extends PureComponent {
       const topPos = (heightStep * (i + 1)) + 'px'
       const s =  {backgroundColor: colorName, position: 'absolute', top: topPos}
       const acceptSelectionFunction = (event) => this.acceptSelection(event, i)
-      return <div key={ i } 
-        onClick={ acceptSelectionFunction }
-        className="ColorSwatch Selecting" style={ s }>
-        </div>
+      return <div key={ i } onClick={ acceptSelectionFunction } className="swatch" style={ s } />
     })
     
     return swatches

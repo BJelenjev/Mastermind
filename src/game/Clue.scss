@@ -1,9 +1,11 @@
 .Clue {
   width: 30px;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 */
-  grid-template-rows: 1f 1f; /* 3 */
+  height: 30px;
   padding: 2px;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
 
   .Dot {
     width: 10px; height: 10px;
