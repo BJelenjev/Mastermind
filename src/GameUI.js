@@ -24,6 +24,10 @@ class CardColorPicker extends PureComponent {
     
     evt.preventDefault()
     this.setState({isPicking: false, selectedColorIndex: colorIdx})
+
+    if(this.props.colorSelected) {
+      this.props.colorSelected(colorIdx)
+    }
   }
   
   pickerWidget() {
@@ -57,10 +61,20 @@ class CardColorPicker extends PureComponent {
   }
 }
 class GameUI extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {selectedColors: Array(NUM_CARDS).fill(0) }
+  }
   render() {
-    const selectableSwatches = Array(NUM_CARDS).fill(null).map((col, i) => {
-      return <CardColorPicker key={ i } cardIdx={ i } colors={ this.props.colors } />
+    const selectableSwatches = Array(NUM_CARDS).fill(null).map((col, cardIdx) => {
+      const selected = (colorIdx) => {
+        const newColors = [].concat(this.state.selectedColors)
+        newColors[cardIdx] = colorIdx
+        this.setState({selectedColors: newColors})
+      }
+      return <CardColorPicker key={ cardIdx } colorSelected={selected} colors={ this.props.colors } />
     })
+    const selectionsMade = NUM_CARDS
     return (
       <div className="GameUI">
         <div className="CardColorPicker">
