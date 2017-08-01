@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
 
+import './App.css';
 import { connect } from 'react-redux'
 import GameUI from './game/GameUI';
 
 // Bind GameUI to Redux
 import onGuess from './action-creators/guess-input-given'
-const reduxStateToUIProps = ({currentGame}) => ({guesses: currentGame.guesses})
-const actionCreatorProps = {onGuess}
+const reduxStateToUIProps = (reduxState) => ({guesses: reduxState.currentGame.guesses})
+const actionCreatorProps =  {onGuess}
 const BoundGameUI = connect(reduxStateToUIProps, actionCreatorProps)(GameUI)
 
 class App extends Component {
