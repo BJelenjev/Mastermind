@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { connect } from 'react-redux'
+import store from './store'
 import GameUI from './GameUI';
+
 import BuildGuess from './BuildGuess'
 
 let initialGuesses = [
@@ -10,12 +13,20 @@ let initialGuesses = [
   BuildGuess(true,  [4,6,2,4], 0, 0),
 ]
 
+const reduxStateToUIProps = ({currentGame}) => ({guesses: currentGame.guesses})
+const actionCreatorProps = {
+  onGuess: (combination) => {
+    store.dispatch({type: "GUESS_INPUT", payload: combination})
+  }
+}
+
+const BoundGameUI = connect(reduxStateToUIProps, actionCreatorProps)(GameUI)
 
 class App extends Component {
   render() {
     return (
       <main className="App">
-        <GameUI guesses={ initialGuesses } colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
+        <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
       </main>
     );
   }
