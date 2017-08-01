@@ -23,5 +23,3 @@ export default (combination) => {
     }, 300)
   }
 }
-
-
