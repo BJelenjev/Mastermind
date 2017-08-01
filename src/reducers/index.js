@@ -4,9 +4,9 @@ export default {
     switch(type) {
       case 'GUESS_RECEIVED':
         const guesses = currentGame.guesses.concat(payload)
-        return Object.assign(currentGame, {guesses})
+        return Object.assign({}, currentGame, {guesses})
       default:
-        return Object.assign({}, currentGame)
+        return currentGame
     }
   }
 }
