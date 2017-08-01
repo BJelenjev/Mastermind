@@ -5,6 +5,11 @@ import './CardColorPicker.css'
 const SWATCH_HEIGHT_STEP = 32
 
 class CardColorPicker extends PureComponent {
+  static propTypes = {
+    onColorPicked: PropTypes.function,
+    colors: PropTypes.array,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -65,11 +70,6 @@ class CardColorPicker extends PureComponent {
       </div>
     )
   }
-}
-
-CardColorPicker.propTypes = {
-  onColorPicked: PropTypes.function,
-  colors: PropTypes.array,
 }
 
 export default CardColorPicker

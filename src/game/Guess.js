@@ -4,6 +4,13 @@ import Clue from './Clue'
 import './Guess.css'
 
 class Guess extends PureComponent {
+  static propTypes = {
+    colors: PropTypes.array.isRequired,
+    combination: PropTypes.array.isRequired,
+    numExact: PropTypes.number.isRequired,
+    numApprox: PropTypes.number.isRequired,
+  }
+
   render() {
     const {colors, combination, numExact, numApprox} = this.props
     const swatches = combination.map((ci, i) => {
@@ -16,13 +23,6 @@ class Guess extends PureComponent {
       </div>
     )
   }
-}
-
-Guess.propTypes = {
-  colors: PropTypes.array.isRequired,
-  combination: PropTypes.array.isRequired,
-  numExact: PropTypes.number.isRequired,
-  numApprox: PropTypes.number.isRequired,
 }
 
 export default Guess

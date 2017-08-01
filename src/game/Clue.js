@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import './Clue.css'
 
 class Clue extends PureComponent {
+  static propTypes = {
+    numExact: PropTypes.number.isRequired,
+    numApprox: PropTypes.number.isRequired,
+  }
+  
   render() {
     const {numExact, numApprox} = this.props
     const numMissed = 4 - (numExact + numApprox)
@@ -28,9 +33,5 @@ class Clue extends PureComponent {
   }
 }
 
-Clue.propTypes = {
-  numExact: PropTypes.number.isRequired,
-  numApprox: PropTypes.number.isRequired,
-}
 
 export default Clue
