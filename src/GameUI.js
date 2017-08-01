@@ -27,7 +27,6 @@ class GameUI extends PureComponent {
   render() {
     const currentIndices = this.state.selectedColorIndices
     const colors = this.props.colors
-    
     const selectableSwatches = currentIndices.map((ci, cardIdx) => {
       const selected = (colorIdx) => {
         const newColors = [].concat(this.state.selectedColorIndices)
@@ -38,7 +37,10 @@ class GameUI extends PureComponent {
     })
     const doneSelecting = this.state.selectedColorIndices.filter((v) => v === 0).length === 0
 
-    const guesses = this.props.guesses.map((guess, i) => {
+    // Guesses arrive in chronological order, and are also sorted as such.
+    // We show the last guess right below the input, so inverse the sorting order
+    const guesses = this.props.guesses.reverse().map((guess, i) => {
+      console.log("Displaying guess ", i)
       return <Guess key={i} colors={ colors } {...guess} />
     })
     
