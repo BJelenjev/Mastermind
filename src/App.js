@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import './App.css';
 import { connect } from 'react-redux'
-import GameUI from './game/GameUI';
+import GameUI from './game/GameUI'
+import SignIn from './user/SignIn'
 
 // Bind GameUI to Redux
 import onGuess from './action-creators/guess-input-given'
@@ -14,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <main className="App">
+        <SignIn />
         <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
       </main>
     );
