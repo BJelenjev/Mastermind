@@ -6,14 +6,14 @@ import hooks from 'feathers-hooks'
 import auth from 'feathers-authentication-client'
 import io from 'socket.io-client/dist/socket.io'
 
-const FEATHERS_TOKEN_KEY = 'mastermind-ui'
+const FEATHERS_AUTH_TOKEN_KEY = 'mastermind-ui-auth'
 const host = 'http://localhost:3030'
 const socket = io(host, {transports: ['websocket']})
 
 const feathersClient = feathers()
   .configure(hooks())
   .configure(socketio(socket))
-  .configure(auth({storage: window.localStorage, storageKey: FEATHERS_TOKEN_KEY}))
+  .configure(auth({storage: window.localStorage, storageKey: FEATHERS_AUTH_TOKEN_KEY}))
 
 // Once instantiated the feathers client is going to hold a socketio connection and manage it. It is in our
 // best interest that we only ever use one client, so _reuse_ the client in all the API instances we export as
