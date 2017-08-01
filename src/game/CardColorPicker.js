@@ -36,9 +36,7 @@ class CardColorPicker extends PureComponent {
     evt.preventDefault()
     this.setState({isPicking: false, selectedColorIndex: colorIdx})
 
-    if(this.props.onColorPicked) {
-      this.props.onColorPicked(colorIdx)
-    }
+    this.props.onColorPicked(colorIdx)
   }
 
   pickerSwatches() {

@@ -33,7 +33,7 @@ class GameUI extends PureComponent {
         newColors[cardIdx] = colorIdx
         this.setState({selectedColorIndices: newColors})
       }
-      return <CardColorPicker key={ cardIdx } selected={ ci } onColorPicked={selected} colors={ this.props.colors } />
+      return <CardColorPicker key={ cardIdx } selected={ ci } onColorPicked={ selected } colors={ this.props.colors } />
     })
     const doneSelecting = this.state.selectedColorIndices.filter((v) => v === 0).length === 0
 
