@@ -67,4 +67,9 @@ class CardColorPicker extends PureComponent {
   }
 }
 
+CardColorPicker.propTypes = {
+  onColorPicked: PropTypes.function,
+  colors: PropTypes.array,
+}
+
 export default CardColorPicker
