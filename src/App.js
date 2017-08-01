@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
 import './App.css';
 import { connect } from 'react-redux'
@@ -18,8 +19,9 @@ const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
 class App extends Component {
   render() {
     return (
+      // <Route exact path='/games/:gameid' component={BoundGameUI} />
       <main className="App">
-        <BoundSignIn />
+        <Route exact path='/sign-in' component={BoundSignIn} />
         <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
       </main>
     );
