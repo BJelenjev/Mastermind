@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import CardColorPicker from './game/CardColorPicker'
-import Guess from './game/Guess'
+import CardColorPicker from './CardColorPicker'
+import Guess from './Guess'
 
 import './GameUI.css';
 
