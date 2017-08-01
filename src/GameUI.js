@@ -38,11 +38,11 @@ class GameUI extends PureComponent {
     const doneSelecting = this.state.selectedColorIndices.filter((v) => v === 0).length === 0
 
     // Guesses arrive in chronological order, and are also sorted as such.
-    // We show the last guess right below the input, so inverse the sorting order
-    const guesses = this.props.guesses.reverse().map((guess, i) => {
+    // We show the last guess right below the input, so reverse them after
+    const guesses = this.props.guesses.map((guess, i) => {
       console.log("Displaying guess ", i)
       return <Guess key={i} colors={ colors } {...guess} />
-    })
+    }).reverse()
     
     return (
       <div className="GameUI">
