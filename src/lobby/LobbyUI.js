@@ -65,9 +65,9 @@ class LobbyUI extends PureComponent {
     const games = (this.props.games || [])
     return (
       <Paper>
-        <ul class="Games">
+        <List>
           { games.map((game) => <LobbyGameItem {...game} />) }
-        </ul>
+        </List>
 
         <form onSubmit={ (evt) => evt.preventDefault() }>
           <RaisedButton
