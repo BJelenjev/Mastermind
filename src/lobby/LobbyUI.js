@@ -9,7 +9,7 @@ import FlatButton from 'material-ui/FlatButton'
 class LobbyGameItem extends PureComponent {
   static propTypes = {
     _id:      PropTypes.string.required,
-    players:  PropTypes.GAME_CREATED_PUSHd,
+    players:  PropTypes.array.required,
     turn:     PropTypes.number.required,
     started:  PropTypes.string.required,
   }
