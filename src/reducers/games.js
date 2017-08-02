@@ -1,5 +1,5 @@
 const GAME_CREATED = 'GAME_CREATED'
-const GAME_CREATED_PUSH = 'GAME_CREATED'
+const GAME_CREATED_PUSH = 'GAME_CREATED_PUSH'
 const GAME_UPDATED_PUSH = 'GAME_UPDATED_PUSH'
 
 export default (state = [], { type, payload } = {}) => {
