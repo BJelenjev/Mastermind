@@ -31,17 +31,11 @@ const BoundLobbyUI = connect(reduxStateToLobbyProps, {onCreateGame})(LobbyUI)
 
 class App extends Component {
   componentWillMount() {
-    console.log(store)
-    store.dispatch((dispatchFn) => {
-      dispatchFn({type: 'APP_MOUNTED', payload: null})
-      subscribe()(dispatchFn)
-    })
+    this.props.subscribe()
   }
 
   render() {
     return (
-      // <Route exact path='/' component={LobbyUI} />
-      // <Route exact path='/games/:gameid' component={BoundGameUI} />
       <main className="App">
         <AppBar title="Let's guess some colors" />
         <Route exact path='/'              component={BoundLobbyUI} />
@@ -52,4 +46,5 @@ class App extends Component {
   }
 }
 
-export default App;
+// Wire up App
+export default connect(null, {subscribe})(App)
