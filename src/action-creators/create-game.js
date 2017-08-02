@@ -1,7 +1,7 @@
 import APIClient from '../api/client'
 
 const GAME_CREATION_REQUESTED = 'GAME_CREATION_REQUESTED'
-const GAME_CREATION_REJECTED = 'GAME_CREATION_REQUESTED'
+const GAME_CREATION_REJECTED = 'GAME_CREATION_REJECTED'
 const GAME_CREATED = 'GAME_CREATED'
 
 const enableLoadingState = function(){}
