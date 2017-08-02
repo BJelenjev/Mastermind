@@ -18,7 +18,7 @@ export default (newUserProperties) => {
     
     client.users().create(newUserProperties).then((result) => {
       dispatch({type: USER_SIGNUP_ACCEPTED, payload: result})
-      dispatch({type: USER_SIGNED_IN,       payload: {via: 'signIn', userId: result._id, email: result.email}})
+      dispatch({type: USER_SIGNED_IN,       payload: {via: 'signUp', userId: result._id, email: result.email}})
       disableLoadingState()
     }).catch((error) => {
       dispatch({type: USER_SIGNUP_REJECTED, payload: error})
