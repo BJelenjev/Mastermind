@@ -14,10 +14,10 @@ export default (state = currentUser, { type, payload } = {}) => {
       return Object.assign({}, {userId, email})
     case AUTH_ERROR :
       // not handled actually...
+      return state
     case USER_SIGNED_OUT :
       window.localStorage.removeItem(USER_INFO_KEY)
       return null
-
     default :
       return state
   }

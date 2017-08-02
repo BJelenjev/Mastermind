@@ -12,9 +12,22 @@ const INITIAL_GAME_STATE = {
   guesses: []
 }
 
+const GAME_UPDATED_PUSH = 'GAME_UPDATED_PUSH'
+const GUESS_RECEIVED = 'GUESS_RECEIVED' // Used for mocked UI sans backend
+
+const maybeUpdateGame = (currentGame, payload) => {
+  if(currentGame._id === payload._id) {
+    return Object.assign({}, currentGame, payload)
+  } else {
+    return currentGame
+  }
+}
+
 export default (currentGame = INITIAL_GAME_STATE, {type, payload}) => {
   switch(type) {
-    case 'GUESS_RECEIVED':
+    case GAME_UPDATED_PUSH :
+      return maybeUpdateGame(currentGame, payload) // using a return to prevent fallthrough
+    case GUESS_RECEIVED:
       const guesses = currentGame.guesses.concat(payload)
       return Object.assign({}, currentGame, {guesses})
     default:
