@@ -41,7 +41,8 @@ class LobbyGameItem extends PureComponent {
   }
      
   render() {
-    const joinButton = this.mayJoin() ? <RaisedButton label="Join/Continue" /> : null
+    const gameUrl = `/games/${this.props._id}`
+    const joinButton = this.mayJoin() ? <RaisedButton href={gameUrl} label="Join/Continue" /> : null
     return(
       <ListItem>
         Game started on { this.props.createdAt } { joinButton }
