@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 
 import './App.css';
 import { connect } from 'react-redux'
@@ -18,7 +19,7 @@ import subscribe from './action-creators/subscribe'
 import store from './store'
 
 // Wire up GameUI
-const reduxStateToGameUIProps = (reduxState) => ({guesses: reduxState.currentGame.guesses})
+const reduxStateToGameUIProps = (reduxState) => reduxState.currentGame
 const BoundGameUI = connect(reduxStateToGameUIProps, {onGuess})(GameUI)
 
 // Wire up signin
@@ -42,11 +43,10 @@ class App extends Component {
       // <Route exact path='/' component={LobbyUI} />
       // <Route exact path='/games/:gameid' component={BoundGameUI} />
       <main className="App">
-        <BoundSignIn />
-        <BoundLobbyUI />
-        <Paper>
-          <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
-        </Paper>
+        <AppBar title="Let's guess some colors" />
+        <Route exact path='/'              component={BoundLobbyUI} />
+        <Route exact path='/sign-in'       component={BoundSignIn} />
+        <Route exact path='/games/:gameid' component={BoundGameUI} />
       </main>
     );
   }

@@ -9,7 +9,10 @@ const uuid = function b(a){
 
 const INITIAL_GAME_STATE = {
   _id: uuid(),
-  inProgress: false,
+  loss:    false,
+  won:     false,
+  started: false,
+  colors: ["gray", "green", "red", "blue", "violet", "brown", "pink"],
   guesses: []
 }
 
