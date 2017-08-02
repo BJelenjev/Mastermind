@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import TimeAgo from 'react-timeago'
 
 import Paper from 'material-ui/Paper'
 import {List, ListItem} from 'material-ui/List'
@@ -45,7 +46,7 @@ class LobbyGameItem extends PureComponent {
     const joinButton = this.mayJoin() ? <RaisedButton href={gameUrl} label="Join/Continue" /> : null
     return(
       <ListItem>
-        Game started on { this.props.createdAt } { joinButton }
+        Started <TimeAgo date={ this.props.createdAt }/> { joinButton }
       </ListItem>
     )
   }
@@ -67,15 +68,14 @@ class LobbyUI extends PureComponent {
     return (
       <Paper>
         <List>
+          <ListItem>
+            <RaisedButton
+              onClick={ this.createGame.bind(this) }
+              primary={true}
+              label="Create a game" />
+          </ListItem>
           { games.map((game) => <LobbyGameItem {...game} />) }
         </List>
-
-        <form onSubmit={ (evt) => evt.preventDefault() }>
-          <RaisedButton
-            onClick={ this.createGame.bind(this) }
-            primary={true}
-            label="Create a game" />
-        </form>
       </Paper>
     )
   }

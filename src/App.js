@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
+//import HomeIcon from 'material-ui/svg-icons/file/home';
 
 import './App.css';
 import { connect } from 'react-redux'
@@ -37,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <main className="App">
-        <AppBar title="Let's guess some colors" />
+        <AppBar title="mindmaster™©" />
         <Route exact path='/'              component={BoundLobbyUI} />
         <Route exact path='/sign-in'       component={BoundSignIn} />
         <Route exact path='/games/:gameid' component={BoundGameUI} />
