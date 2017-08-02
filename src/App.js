@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import Paper from 'material-ui/Paper';
 
 import './App.css';
 import { connect } from 'react-redux'
@@ -43,7 +44,9 @@ class App extends Component {
       <main className="App">
         <BoundSignIn />
         <BoundLobbyUI />
-        <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
+        <Paper>
+          <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
+        </Paper>
       </main>
     );
   }

@@ -1,3 +1,4 @@
+const GAME_JOINED = 'GAME_JOINED'
 
 // https://gist.github.com/jed/982883
 const uuid = function b(a){
@@ -25,6 +26,8 @@ const maybeUpdateGame = (currentGame, payload) => {
 
 export default (currentGame = INITIAL_GAME_STATE, {type, payload}) => {
   switch(type) {
+    case GAME_JOINED : // Joinint another game than the current one (or the action is redispatched)
+      return Object.assign({}, payload)
     case GAME_UPDATED_PUSH :
       return maybeUpdateGame(currentGame, payload) // using a return to prevent fallthrough
     case GUESS_RECEIVED:
