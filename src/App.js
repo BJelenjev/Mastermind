@@ -12,20 +12,36 @@ import onGuess  from './action-creators/guess-input-given'
 import onSignUp from './action-creators/sign-up'
 import onSignIn from './action-creators/sign-in'
 import onCreateGame from './action-creators/create-game'
+import subscribe from './action-creators/subscribe'
 
-const reduxStateToUIProps = (reduxState) => ({guesses: reduxState.currentGame.guesses})
-const actionCreatorProps =  {onGuess}
-const BoundGameUI = connect(reduxStateToUIProps, actionCreatorProps)(GameUI)
+import store from './store'
+
+// Wire up GameUI
+const reduxStateToGameUIProps = (reduxState) => ({guesses: reduxState.currentGame.guesses})
+const BoundGameUI = connect(reduxStateToGameUIProps, {onGuess})(GameUI)
+
+// Wire up signin
 const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
-const BoundLobbyUI = connect(null, {onCreateGame})(LobbyUI)
+
+// Wire up lobby
+const reduxStateToLobbyProps = (reduxState) => ({games: reduxState.games})
+const BoundLobbyUI = connect(reduxStateToLobbyProps, {onCreateGame})(LobbyUI)
 
 class App extends Component {
+  componentWillMount() {
+    console.log(store)
+    store.dispatch((dispatchFn) => {
+      dispatchFn({type: 'APP_MOUNTED', payload: null})
+      subscribe()(dispatchFn)
+    })
+  }
+
   render() {
     return (
       // <Route exact path='/' component={LobbyUI} />
       // <Route exact path='/games/:gameid' component={BoundGameUI} />
       <main className="App">
-        <Route exact path='/sign-in' component={BoundSignIn} />
+        <BoundSignIn />
         <BoundLobbyUI />
         <BoundGameUI colors= { ["gray", "green", "red", "blue", "violet", "brown", "pink"] } />
       </main>
