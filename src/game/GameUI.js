@@ -9,6 +9,11 @@ import './GameUI.css';
 const NUM_CARDS = 4
 
 class GameUI extends PureComponent {
+  static propTypes = {
+    colors: PropTypes.array.required,
+    onGuess: PropTypes.function,
+  }
+
   constructor(props) {
     super(props)
     this.state = {selectedColorIndices: Array(NUM_CARDS).fill(0) }
