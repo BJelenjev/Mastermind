@@ -14,8 +14,6 @@ export default (newUserProperties) => {
     enableLoadingState()
     const client = new APIClient()
     
-    console.log(client)
-    
     client.users().create(newUserProperties).then((result) => {
       dispatch({type: USER_SIGNUP_ACCEPTED, payload: result})
       dispatch({type: USER_SIGNED_IN,       payload: {via: 'signUp', userId: result._id, email: result.email}})
