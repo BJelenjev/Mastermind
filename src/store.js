@@ -5,8 +5,7 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 
 import reducers from './reducers'
 
-const baseHistory = browserHistory
-const routingMiddleware = routerMiddleware(baseHistory)
+const routingMiddleware = routerMiddleware(browserHistory)
 const reducer = combineReducers({ ...reducers,  routing: routerReducer })
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : (f) => f
@@ -19,6 +18,6 @@ const enhancer = compose(
 
 const store = createStore(reducer, enhancer)
 
-export const history = syncHistoryWithStore(baseHistory, store)
+export const history = syncHistoryWithStore(browserHistory, store)
 
 export default store
