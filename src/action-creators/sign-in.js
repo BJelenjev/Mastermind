@@ -1,5 +1,5 @@
 import APIClient from '../api/client'
-import history from '../history'
+import history from '../store'
 
 export const USER_SIGNED_IN = 'USER_SIGNED_IN'
 
