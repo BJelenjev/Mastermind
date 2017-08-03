@@ -4,7 +4,7 @@ const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-export default (combination) => {
+export default (gameId, combination) => {
   return (dispatchFn) => {
     dispatchFn({type: GUESS_INPUT_GIVEN, combination})
 
