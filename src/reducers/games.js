@@ -17,6 +17,7 @@ function upsert(games, game) {
     return [].concat(games).concat([game])
   }
 }
+
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case GAMES_FETCHED :
