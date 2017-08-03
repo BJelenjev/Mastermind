@@ -6,7 +6,7 @@ const USER_INFO_KEY = 'mastermind-ui-user'
 
 export default (state = null, { type, payload } = {}) => {
   switch (type) {
-  case USER_SIGNED_IN :
+    case USER_SIGNED_IN :
       // Save the user info (the JWT auth token is saved by feathers-authentication-client)
       const {userId, email} = payload
       window.localStorage.setItem(USER_INFO_KEY, JSON.stringify({userId, email}))

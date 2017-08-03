@@ -22,6 +22,8 @@ class LobbyGameItem extends PureComponent {
   }
   
   mayJoin() {
+    return true
+    
     const {currentUser, players} = this.props
     const {participantIds} = players.map((p) => p.userId)
 
@@ -45,7 +47,7 @@ class LobbyGameItem extends PureComponent {
      
   render() {
     const gameUrl = `/games/${this.props._id}`
-    const joinButton = this.mayJoin() ? <RaisedButton href="xxx" label="Join/Continue" /> : null
+    const joinButton = this.mayJoin() ? <RaisedButton href={ gameUrl } label="Join/Continue" /> : null
     return(
       <ListItem>
         Started <TimeAgo date={ this.props.createdAt }/> { joinButton }
