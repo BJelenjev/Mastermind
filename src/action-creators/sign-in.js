@@ -1,4 +1,5 @@
 import APIClient from '../api/client'
+import history from '../history'
 
 export const USER_SIGNED_IN = 'USER_SIGNED_IN'
 
@@ -13,6 +14,7 @@ export default (inputProperties) => {
     const {email, password} = inputProperties
     client.authenticate({email, password}).then((result) => {
         dispatch({type: USER_SIGNED_IN, payload: {via: 'signIn', userId: result._id, email:result.email}})
+        history.push('/')
         disableLoadingState()
       })
       .catch((error) => {

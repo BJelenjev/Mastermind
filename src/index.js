@@ -4,6 +4,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter } from 'react-router-dom'
+import history from './history'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -17,7 +18,7 @@ injectTapEventPlugin()
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter history={history}>
       <MuiThemeProvider>
         <App />
       </MuiThemeProvider>

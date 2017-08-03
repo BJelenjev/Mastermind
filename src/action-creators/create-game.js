@@ -1,5 +1,5 @@
 import APIClient from '../api/client'
-
+import history from '../history'
 const GAME_CREATION_REQUESTED = 'GAME_CREATION_REQUESTED'
 const GAME_CREATION_REJECTED = 'GAME_CREATION_REJECTED'
 const GAME_CREATED = 'GAME_CREATED'
@@ -17,7 +17,8 @@ export default (newUserProperties) => {
     client.games().create({}).then((result) => {
       dispatch({type: GAME_CREATED, payload: result})
       dispatch({type: GAME_JOINED,  payload: result})
-      
+      // redirect via history to the game page
+      history.push(`/game/${result._id}`)
       disableLoadingState()
     }).catch((error) => {
       dispatch({type: GAME_CREATION_REJECTED, payload: error})
