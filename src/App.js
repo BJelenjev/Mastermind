@@ -46,7 +46,6 @@ class App extends Component {
   }
 }
 
-const ohai = (props) => <h1>Ohai</h1>
 const BoundApp = connect(null, {subscribe})(App)
 
 class RouterWrapper extends Component {
