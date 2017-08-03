@@ -27,7 +27,7 @@ const BoundGameUI = connect(reduxStateToGameUIProps, {onGuess})(GameUI)
 const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
 
 // Wire up lobby
-const reduxStateToLobbyProps = (reduxState) => ({games: reduxState.games})
+const reduxStateToLobbyProps = (reduxState) => ({games: reduxState.games, currentUser: reduxState.currentUser})
 const BoundLobbyUI = connect(reduxStateToLobbyProps, {onCreateGame})(LobbyUI)
 
 class App extends Component {

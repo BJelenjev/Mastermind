@@ -4,7 +4,6 @@ import TimeAgo from 'react-timeago'
 
 import Paper from 'material-ui/Paper'
 import {List, ListItem} from 'material-ui/List'
-import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 
@@ -12,20 +11,23 @@ import store from '../store'
 
 class LobbyGameItem extends PureComponent {
   static propTypes = {
-    _id:           PropTypes.string.required,
+    _id:           PropTypes.string,
     currentUsedId: PropTypes.string,
-    ownerId:       PropTypes.string.required,
-    players:       PropTypes.array.required,
-    turn:          PropTypes.number.required,
-    started:       PropTypes.string.required,
+    ownerId:       PropTypes.string,
+    players:       PropTypes.array,
+    turn:          PropTypes.number,
+    started:       PropTypes.string,
     loss:          PropTypes.boolean,
     createdAt:     PropTypes.boolean,
   }
   
   mayJoin() {
-    const {players} = this.props
+    const {currentUser, players} = this.props
     const {participantIds} = players.map((p) => p.userId)
-    const myId = store.getState().currentUser.userId || null
+
+    if(!currentUser) return false
+
+    const myId = currentUser._id
 
     // Only allow joining if logged in 
     if(!myId) return false
@@ -43,7 +45,7 @@ class LobbyGameItem extends PureComponent {
      
   render() {
     const gameUrl = `/games/${this.props._id}`
-    const joinButton = this.mayJoin() ? <RaisedButton href={gameUrl} label="Join/Continue" /> : null
+    const joinButton = this.mayJoin() ? <RaisedButton href="xxx" label="Join/Continue" /> : null
     return(
       <ListItem>
         Started <TimeAgo date={ this.props.createdAt }/> { joinButton }
@@ -68,13 +70,15 @@ class LobbyUI extends PureComponent {
     return (
       <Paper>
         <List>
-          <ListItem>
+          <ListItem key="0" >
             <RaisedButton
               onClick={ this.createGame.bind(this) }
               primary={true}
               label="Create a game" />
           </ListItem>
-          { games.map((game) => <LobbyGameItem {...game} />) }
+        </List>
+        <List>
+          { games.map((game, i) => <LobbyGameItem key={i} {...game} />) }
         </List>
       </Paper>
     )
