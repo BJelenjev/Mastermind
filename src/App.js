@@ -5,24 +5,19 @@ import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 //import HomeIcon from 'material-ui/svg-icons/file/home';
 
+
 import {history} from './store'
 
 import './App.css';
-import GameUI from './game/GameUI'
+import GamePlaceholder from './game/GamePlaceholder'
 import SignIn from './user/SignIn'
 import LobbyUI from './lobby/LobbyUI'
 
 // Bind GameUI to Redux
-import onGuess  from './action-creators/guess-input-given'
 import onSignUp from './action-creators/sign-up'
 import onSignIn from './action-creators/sign-in'
 import onCreateGame from './action-creators/create-game'
 import subscribe from './action-creators/subscribe'
-
-
-// Wire up GameUI
-const reduxStateToGameUIProps = (reduxState) => reduxState.currentGame
-const BoundGameUI = connect(reduxStateToGameUIProps, {onGuess})(GameUI)
 
 // Wire up signin
 const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
@@ -56,7 +51,7 @@ class RouterWrapper extends Component {
           <IndexRoute component={BoundLobbyUI} />
         </Route>
         <Route path="/games/:gameId" component={BoundApp}>
-          <IndexRoute component={BoundGameUI} />
+          <IndexRoute component={GamePlaceholder} />
         </Route>
         <Route path="/sign-in" component={BoundApp}>
           <IndexRoute component={BoundSignIn} />
