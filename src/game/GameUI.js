@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 
-import submitGuess from '../action-creators/submit-guess'
+import submitGuess from '../action-creators/guess-input-given'
 import CardColorPicker from './CardColorPicker'
 import Guess from './Guess'
 
@@ -68,7 +68,8 @@ class GameUI extends PureComponent {
 }
 
 
-export default GameUI
 const extractCurrentGame = (reduxState) => reduxState.currentGame
 const ConnectedGameUI = connect(extractCurrentGame, {submitGuess})(GameUI)
+
+export default GameUI
 export {ConnectedGameUI}

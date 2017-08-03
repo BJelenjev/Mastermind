@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-// import onGuess  from '../action-creators/guess-input-given'
 import joinGame from '../action-creators/join-game'
 import {ConnectedGameUI} from './GameUI'
 
@@ -11,7 +10,6 @@ const onGuess = (combo) => console.log(combo)
 class GamePlaceholder extends PureComponent {
   constructor(props, context) {
     super(props, context)
-    this.state = {matchingGame: false}
   }
   
   componentDidMount() {
