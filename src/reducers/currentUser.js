@@ -3,9 +3,9 @@ const USER_SIGNED_OUT = 'USER_SIGNED_OUT'
 const AUTH_ERROR = 'AUTH_ERROR'
 
 const USER_INFO_KEY = 'mastermind-ui-user'
-const currentUser = JSON.parse(window.localStorage.getItem(USER_INFO_KEY) || 'null')
+const defaultCurrentUser = null // JSON.parse(window.localStorage.getItem(USER_INFO_KEY) || 'null')
 
-export default (state = currentUser, { type, payload } = {}) => {
+export default (state = null, { type, payload } = {}) => {
   switch (type) {
   case USER_SIGNED_IN :
       // Save the user info (the JWT auth token is saved by feathers-authentication-client)
