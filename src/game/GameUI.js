@@ -12,6 +12,7 @@ class GameUI extends PureComponent {
   static propTypes = {
     colors: PropTypes.array.required,
     onGuess: PropTypes.function,
+    guesses: PropTypes.array
   }
 
   constructor(props, context) {
