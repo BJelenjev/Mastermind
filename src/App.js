@@ -56,6 +56,12 @@ class RouterWrapper extends Component {
         <Route path="/" component={BoundApp}>
           <IndexRoute component={BoundLobbyUI} />
         </Route>
+        <Route path="/game/:gameId" component={BoundApp}>
+          <IndexRoute component={BoundGameUI} />
+        </Route>
+        <Route path="/sign-in" component={BoundApp}>
+          <IndexRoute component={BoundSignIn} />
+        </Route>
       </Router>
     )
   }
