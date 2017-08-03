@@ -22,9 +22,12 @@ class LobbyGameItem extends PureComponent {
   }
   
   mayJoin() {
-    const {players} = this.props
+    const {currentUser, players} = this.props
     const {participantIds} = players.map((p) => p.userId)
-    const myId = store.getState().currentUser.userId || null
+
+    if(!currentUser) return false
+
+    const myId = currentUser._id
 
     // Only allow joining if logged in 
     if(!myId) return false
@@ -42,7 +45,7 @@ class LobbyGameItem extends PureComponent {
      
   render() {
     const gameUrl = `/games/${this.props._id}`
-    const joinButton = this.mayJoin() ? <RaisedButton href={gameUrl} label="Join/Continue" /> : null
+    const joinButton = this.mayJoin() ? <RaisedButton href="xxx" label="Join/Continue" /> : null
     return(
       <ListItem>
         Started <TimeAgo date={ this.props.createdAt }/> { joinButton }
@@ -67,13 +70,15 @@ class LobbyUI extends PureComponent {
     return (
       <Paper>
         <List>
-          <ListItem>
+          <ListItem key="0" >
             <RaisedButton
               onClick={ this.createGame.bind(this) }
               primary={true}
               label="Create a game" />
           </ListItem>
-          { games.map((game) => <LobbyGameItem {...game} />) }
+        </List>
+        <List>
+          { games.map((game, i) => <LobbyGameItem key={i} {...game} />) }
         </List>
       </Paper>
     )
