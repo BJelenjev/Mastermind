@@ -1,5 +1,5 @@
 import APIClient, { FEATHERS_AUTH_TOKEN_KEY } from '../api/client'
-import history from '../store'
+import {history} from '../store'
 
 const GAME_CREATION_REQUESTED = 'GAME_CREATION_REQUESTED'
 const GAME_CREATION_REJECTED = 'GAME_CREATION_REJECTED'
