@@ -29,7 +29,7 @@ const maybeUpdateGame = (currentGame, payload) => {
 
 export default (currentGame = INITIAL_GAME_STATE, {type, payload}) => {
   switch(type) {
-    case GAME_JOINED : // Joinint another game than the current one (or the action is redispatched)
+    case GAME_JOINED :
       return Object.assign({}, payload)
     case GAME_UPDATED_PUSH :
       return maybeUpdateGame(currentGame, payload) // using a return to prevent fallthrough
