@@ -17,6 +17,7 @@ export default (newUserProperties) => {
     client.games().create({}).then((result) => {
       dispatch({type: GAME_CREATED, payload: result})
       dispatch({type: GAME_JOINED,  payload: result})
+      
       disableLoadingState()
     }).catch((error) => {
       dispatch({type: GAME_CREATION_REJECTED, payload: error})

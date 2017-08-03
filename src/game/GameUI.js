@@ -14,8 +14,8 @@ class GameUI extends PureComponent {
     onGuess: PropTypes.function,
   }
 
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {selectedColorIndices: Array(NUM_CARDS).fill(0) }
   }
 

@@ -10,8 +10,8 @@ class CardColorPicker extends PureComponent {
     colors: PropTypes.array,
   }
 
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       isPicking: false,
       selectedColorIndex: Number(props.selected), // If "undefined" is given it will become 0 (gray)
