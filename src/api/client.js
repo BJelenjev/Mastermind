@@ -6,7 +6,8 @@ import hooks from 'feathers-hooks'
 import auth from 'feathers-authentication-client'
 import io from 'socket.io-client/dist/socket.io'
 
-const FEATHERS_AUTH_TOKEN_KEY = 'mastermind-ui-auth'
+export const FEATHERS_AUTH_TOKEN_KEY = 'mastermind-ui-auth-token'
+
 const host = 'http://localhost:3030'
 const socket = io(host, {transports: ['websocket']})
 
@@ -31,10 +32,11 @@ class APIClient {
   games() {
     return this.app.service('games')
   }
-
+  
   authenticate({ email, password }) {
     const authArgs = Object.assign({strategy: 'local'}, {email, password})
     return this.app.authenticate(authArgs).then((response) => {
+      console.log("Verifying token", response)
       return this.app.passport.verifyJWT(response.accessToken);
     }).then((payload) => {
       return this.app.service('users').get(payload.userId);
