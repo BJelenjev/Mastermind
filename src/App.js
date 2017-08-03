@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 //import HomeIcon from 'material-ui/svg-icons/file/home';

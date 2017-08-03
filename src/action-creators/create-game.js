@@ -1,5 +1,5 @@
 import APIClient, { FEATHERS_AUTH_TOKEN_KEY } from '../api/client'
-import history from '../history'
+import history from '../store'
 
 const GAME_CREATION_REQUESTED = 'GAME_CREATION_REQUESTED'
 const GAME_CREATION_REJECTED = 'GAME_CREATION_REJECTED'
@@ -14,7 +14,7 @@ export default (newUserProperties) => {
   return (dispatch) => {
     dispatch({type: GAME_CREATION_REQUESTED, payload: {}})
     enableLoadingState()
-    
+
     const client = new APIClient()
     client.app.authenticate({ storageKey: FEATHERS_AUTH_TOKEN_KEY })
       .then(() => {
@@ -30,4 +30,3 @@ export default (newUserProperties) => {
       
   }
 }
-
