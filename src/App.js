@@ -25,8 +25,6 @@ import subscribe from './action-creators/subscribe'
 const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
 
 // Wire up lobby
-const reduxStateToLobbyProps = (reduxState) => ({games: reduxState.games, currentUser: reduxState.currentUser})
-const BoundLobbyUI = connect(reduxStateToLobbyProps, {onCreateGame})(LobbyUI)
 
 class App extends Component {
   componentWillMount() {
@@ -58,7 +56,7 @@ class RouterWrapper extends Component {
     return (
       <Router history={history}>
         <Route path="/" component={BoundApp}>
-          <IndexRoute component={BoundLobbyUI} />
+          <IndexRoute component={LobbyUI} />
         </Route>
         <Route path="/games/:gameId" component={BoundApp}>
           <IndexRoute component={GamePlaceholder} />
