@@ -18,7 +18,7 @@ class GamePlaceholder extends PureComponent {
   componentDidMount() {
     const requestedGameId = this.props.params.gameId
     const currentGameId   = this.props.currentGame._id
-    if(requestedGameId != currentGameId) {
+    if(requestedGameId !== currentGameId) {
       console.log("Need to join first: ", requestedGameId, currentGameId)
       this.props.joinGame(requestedGameId)
     } else {
