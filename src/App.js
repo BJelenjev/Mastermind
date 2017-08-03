@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
+import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 //import HomeIcon from 'material-ui/svg-icons/file/home';
 
+import {history} from './store'
+
 import './App.css';
-import { connect } from 'react-redux'
 import GameUI from './game/GameUI'
 import SignIn from './user/SignIn'
 import LobbyUI from './lobby/LobbyUI'
@@ -17,7 +19,6 @@ import onSignIn from './action-creators/sign-in'
 import onCreateGame from './action-creators/create-game'
 import subscribe from './action-creators/subscribe'
 
-import store from './store'
 
 // Wire up GameUI
 const reduxStateToGameUIProps = (reduxState) => reduxState.currentGame
@@ -34,18 +35,31 @@ class App extends Component {
   componentWillMount() {
     this.props.subscribe()
   }
-
+  
   render() {
     return (
-      <main className="App">
+      <div className="App">
         <AppBar title="mindmaster™©" />
-        <Route exact path='/'              component={BoundLobbyUI} />
-        <Route exact path='/sign-in'       component={BoundSignIn} />
-        <Route exact path='/games/:gameid' component={BoundGameUI} />
-      </main>
-    );
+        { this.props.children }
+      </div>
+    )
+  }
+}
+
+const ohai = (props) => <h1>Ohai</h1>
+const BoundApp = connect(null, {subscribe})(App)
+
+class RouterWrapper extends Component {
+  render() {
+    return (
+      <Router history={history}>
+        <Route path="/" component={BoundApp}>
+          <IndexRoute component={BoundLobbyUI} />
+        </Route>
+      </Router>
+    )
   }
 }
 
 // Wire up App
-export default connect(null, {subscribe})(App)
+export default RouterWrapper
