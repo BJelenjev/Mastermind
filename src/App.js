@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute, Link } from 'react-router'
 import { connect } from 'react-redux'
-import Paper from 'material-ui/Paper';
-import AppBar from 'material-ui/AppBar';
+import Paper from 'material-ui/Paper'
+import AppBar from 'material-ui/AppBar'
+import FontIcon from 'material-ui/FontIcon'
+
 //import HomeIcon from 'material-ui/svg-icons/file/home';
 
 
@@ -32,9 +34,17 @@ class App extends Component {
   }
   
   render() {
+    const navigateHome = () => history.push('/')
+    const icos = {
+      padding: '12px',
+      background: 'white',
+      cursor: 'pointer',
+    }
+    const homeIcon = <Link to='/'><FontIcon className="material-icons" style={ icos }>home</FontIcon></Link>
     return (
       <div className="App">
-        <AppBar title="mindmaster™©" />
+        <AppBar title="mindmaster™©" iconElementLeft={homeIcon} onLeftIconButtonTouchTap={ navigateHome } onTitleTouchTap={ navigateHome }/>
+        
         { this.props.children }
       </div>
     )

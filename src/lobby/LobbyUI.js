@@ -47,13 +47,11 @@ class LobbyGameItem extends PureComponent {
      
   render() {
     const gameUrl = `/games/${this.props._id}`
-    const joinButton = this.mayJoin() ? 
-      <Link to={ gameUrl }>
-        <RaisedButton label="Join/Continue" />
-      </Link> : null
+    const joinButton =  <Link to={ gameUrl }><RaisedButton label="Join/Continue" /></Link>
     return(
       <ListItem>
-        Started <TimeAgo date={ this.props.createdAt }/> { joinButton }
+        Started <TimeAgo date={ this.props.createdAt }/>
+        { this.mayJoin() ? joinButton : "Sign-in or create an account to join" }
       </ListItem>
     )
   }
