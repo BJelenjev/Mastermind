@@ -11,12 +11,12 @@ import store from '../store'
 
 class LobbyGameItem extends PureComponent {
   static propTypes = {
-    _id:           PropTypes.string.required,
+    _id:           PropTypes.string,
     currentUsedId: PropTypes.string,
-    ownerId:       PropTypes.string.required,
-    players:       PropTypes.array.required,
-    turn:          PropTypes.number.required,
-    started:       PropTypes.string.required,
+    ownerId:       PropTypes.string,
+    players:       PropTypes.array,
+    turn:          PropTypes.number,
+    started:       PropTypes.string,
     loss:          PropTypes.boolean,
     createdAt:     PropTypes.boolean,
   }
