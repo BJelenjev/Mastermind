@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import submitGuess from '../action-creators/submit-guess'
 import CardColorPicker from './CardColorPicker'
 import Guess from './Guess'
+import GameOutcome from './GameOutcome'
 
 import './GameUI.css';
 
@@ -17,6 +18,8 @@ class GameUI extends PureComponent {
     colors: PropTypes.array.required,
     submitGuess: PropTypes.function,
     guesses: PropTypes.array,
+    won:  PropTypes.boolean,
+    loss: PropTypes.boolean,
   }
 
   constructor(props, context) {
@@ -60,6 +63,9 @@ class GameUI extends PureComponent {
       return <Guess key={i} colors={ colors } {...guess} />
     }).reverse()
     
+    const gameEnded = (this.props.won || this.props.loss)
+    const gameOutcomeView = gameEnded ? <GameOutcome didWin={!!this.props.won} /> : null
+    
     return (
       <div className="GameUI">
         <div className="pickers-and-try">
@@ -67,6 +73,7 @@ class GameUI extends PureComponent {
           <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
             <span role="img" aria-label="Guess">🎲</span></button>
         </div>
+        { gameOutcomeView }
         { guesses }
       </div>
     );

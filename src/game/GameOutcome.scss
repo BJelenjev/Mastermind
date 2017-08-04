@@ -1,0 +1,17 @@
+.GameOutcome {
+  display: grid;
+  grid-template-columns: auto 40px 40px 40px 40px 40px auto; /* 2 */
+
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+
+  .ico {
+    width: 34px;
+    height: 32px;
+    margin-right: 10px;
+  }
+  
+  .ico:nth-child(1) {
+    grid-column-start: 2;
+  }
+}
