@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 
-import submitGuess from '../action-creators/guess-input-given'
+import submitGuess from '../action-creators/submit-guess'
 import CardColorPicker from './CardColorPicker'
 import Guess from './Guess'
 
