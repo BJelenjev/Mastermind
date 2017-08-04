@@ -8,7 +8,7 @@ import io from 'socket.io-client/dist/socket.io'
 
 export const FEATHERS_AUTH_TOKEN_KEY = 'mastermind-ui-auth-token'
 
-const host = 'http://localhost:3030'
+const host = process.env.API_HOST || 'https://mindmasterapi.herokuapp.com'
 const socket = io(host, {transports: ['websocket']})
 
 const feathersClient = feathers()
