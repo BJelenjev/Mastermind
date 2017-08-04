@@ -3,7 +3,7 @@ const USER_SIGNED_OUT = 'USER_SIGNED_OUT'
 const AUTH_ERROR = 'AUTH_ERROR'
 
 const USER_INFO_KEY = 'mastermind-ui-user'
-const initialUserState = JSON.parse(window.localStorage.getItem(USER_STORAGE_KEY) || 'null')
+const initialUserState = JSON.parse(window.localStorage.getItem(USER_INFO_KEY) || 'null')
 
 export default (state = initialUserState, { type, payload } = {}) => {
   switch (type) {
