@@ -42,17 +42,12 @@ class GameItem extends PureComponent {
     players:       PropTypes.array,
     turn:          PropTypes.number,
     started:       PropTypes.string,
-    loss:          PropTypes.boolean,
-    won:           PropTypes.boolean,
     createdAt:     PropTypes.boolean,
   }
   
   mayJoin() {
     const {currentUser, players, won, loss} = this.props
     const participantIds = players.map((p) => p._id)
-
-    // Disallow if the game is done
-    if(won || loss) return false
 
     // Only allow joining if logged in 
     if(!currentUser) return false
@@ -68,7 +63,7 @@ class GameItem extends PureComponent {
   }
   
   render() {
-    if(this.props.won || this.props.loss) {
+    if(this.props.gamePhase !== "inProgress") {
       return <DoneGame {...this.props} />
     }
     if(this.mayJoin()) {
