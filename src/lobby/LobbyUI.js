@@ -26,7 +26,7 @@ class LobbyUI extends PureComponent {
   }
 
   render() {
-    const {games} = this.props
+    const {games, currentUser} = this.props
     
     const signinControls = <List>
         <ListItem key="0" >
@@ -45,7 +45,7 @@ class LobbyUI extends PureComponent {
         </ListItem>
       </List>
 
-    const gamesList = games.map((game, i) => <GameItem key={i + 1} {...game} />)
+    const gamesList = games.map((game, i) => <GameItem key={i + 1} {...game} currentUser={ currentUser }/>)
     const fade = {color: "rgb(200,200,200)"}
     const sadServer = <p style={ fade }>No games going on, it is very empty here.</p>
 
