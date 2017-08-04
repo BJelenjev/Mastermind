@@ -1,4 +1,3 @@
-// src/actions/games/subscribe.js
 import API from '../api/client'
 
 export const SUBSCRIBED_TO_GAMES_SERVICE = 'SUBSCRIBED_TO_GAMES_SERVICE'

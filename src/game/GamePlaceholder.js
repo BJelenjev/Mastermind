@@ -1,18 +1,15 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-// import onGuess  from '../action-creators/guess-input-given'
 import joinGame from '../action-creators/join-game'
-import GameUI from './GameUI'
+import {ConnectedGameUI} from './GameUI'
 
 const onGuess = (combo) => console.log(combo)
-const BoundGameUI = connect((reduxState) => reduxState.currentGame, {onGuess})(GameUI)
 
 // Will either load the game UI for currentGame OR will call the action to join the game
 class GamePlaceholder extends PureComponent {
   constructor(props, context) {
     super(props, context)
-    this.state = {matchingGame: false}
   }
   
   componentDidMount() {
@@ -29,7 +26,7 @@ class GamePlaceholder extends PureComponent {
   
   render() {
     if((this.props.params || {}).gameId === this.props.currentGame._id) {
-      return <BoundGameUI />
+      return <ConnectedGameUI />
     } else {
       return <h3>Still joining this one</h3>
     }

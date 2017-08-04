@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
 
+import submitGuess from '../action-creators/submit-guess'
 import CardColorPicker from './CardColorPicker'
 import Guess from './Guess'
 
@@ -8,26 +10,35 @@ import './GameUI.css';
 
 const NUM_CARDS = 4
 
+// Handles the interface for an entire game
 class GameUI extends PureComponent {
   static propTypes = {
+    _id: PropTypes.string,
     colors: PropTypes.array.required,
-    onGuess: PropTypes.function,
-    guesses: PropTypes.array
+    submitGuess: PropTypes.function,
+    guesses: PropTypes.array,
   }
 
   constructor(props, context) {
     super(props, context)
+    
     this.state = {selectedColorIndices: Array(NUM_CARDS).fill(0) }
   }
 
-  submitGuess() {
+  submitGuess(evt) {
     const combination = [].concat(this.state.selectedColorIndices)
     // Call up with the combination
-    this.props.onGuess(combination)
+    this.props.submitGuess(this.props._id, combination)
     // Reset the selected colors back to gray cards. On next render
     // the color selection widgets are going to pick these values up
-    // and reset themselves to gray
+    // and reset themselves to gray.
     this.setState({selectedColorIndices: Array(NUM_CARDS).fill(0)})
+
+    // By way of easter-egg/debugging ease (or for rapid play)
+    // holding the Alt key while submitting will suppress this reset :-P
+    if(evt.altKey) {
+      this.setState({selectedColorIndices: combination})
+    }
   }
   
   render() {
@@ -62,4 +73,10 @@ class GameUI extends PureComponent {
   }
 }
 
-export default GameUI;
+
+
+const extractCurrentGame = (rs) => ({...rs.currentGame, currentUser: rs.currentUser})
+const ConnectedGameUI = connect(extractCurrentGame, {submitGuess})(GameUI)
+
+export default GameUI
+export {ConnectedGameUI}
