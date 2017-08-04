@@ -25,14 +25,20 @@ class GameUI extends PureComponent {
     this.state = {selectedColorIndices: Array(NUM_CARDS).fill(0) }
   }
 
-  submitGuess() {
+  submitGuess(evt) {
     const combination = [].concat(this.state.selectedColorIndices)
     // Call up with the combination
     this.props.submitGuess(this.props._id, combination)
     // Reset the selected colors back to gray cards. On next render
     // the color selection widgets are going to pick these values up
-    // and reset themselves to gray
+    // and reset themselves to gray.
     this.setState({selectedColorIndices: Array(NUM_CARDS).fill(0)})
+
+    // By way of easter-egg/debugging ease (or for rapid play)
+    // holding the Alt key while submitting will suppress this reset :-P
+    if(evt.altKey) {
+      this.setState({selectedColorIndices: combination})
+    }
   }
   
   render() {
