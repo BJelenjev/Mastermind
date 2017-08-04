@@ -5,10 +5,6 @@ export const GUESS_REJECTED_BY_SERVER = 'GUESS_REJECTED_BY_SERVER'
 export const GUESS_ACCEPTED_BY_SERVER = 'GUESS_ACCEPTED_BY_SERVER'
 export const AUTH_ERROR = 'AUTH_ERROR'
 
-const randomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min
-}
-
 export default (gameId, combination) => {
   return (dispatch) => {
     dispatch({type: GUESS_INPUT_GIVEN, combination})
