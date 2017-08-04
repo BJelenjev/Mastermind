@@ -72,7 +72,6 @@ class GameUI extends PureComponent {
     }).reverse()
     
     const gameEnded = (this.props.won || this.props.loss)
-    const gameOutcomeView = gameEnded ? <GameOutcome didWin={!!this.props.won} /> : null
     const DICE = "🎲"
     
     return (
@@ -85,7 +84,9 @@ class GameUI extends PureComponent {
             </button>
           </div>
         </Contitional>
-        { gameOutcomeView }
+        <Contitional if= { gameEnded } >
+            <GameOutcome didWin={!!this.props.won} />
+        </Contitional>
         { guesses }
       </div>
     );
