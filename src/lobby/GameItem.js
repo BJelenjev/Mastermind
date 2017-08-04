@@ -49,7 +49,7 @@ class GameItem extends PureComponent {
   
   mayJoin() {
     const {currentUser, players, won, loss} = this.props
-    const {participantIds} = players.map((p) => p._id)
+    const participantIds = players.map((p) => p._id)
 
     // Disallow if the game is done
     if(won || loss) return false
