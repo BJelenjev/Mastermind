@@ -20,7 +20,7 @@ function joinGame(id) {
         dispatch({type: GAME_JOINED,        payload: result})
         disableLoadingState()
       }).catch((error) => {
-        dispatch({type: GAME_JOIN_REJECTED, payload: error})
+        dispatch({type: GAME_JOIN_REJECTED, payload: error.toString()})
         disableLoadingState()
       })
     }).catch((error) => {
