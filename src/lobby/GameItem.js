@@ -14,22 +14,22 @@ const DoneGame = (props) => {
 }
 
 const JoinableGame = (props) => {
-  const {_id, createdAt} = props
+  const {_id, createdAt, owner} = props
   const gameUrl = `/games/${_id}`
   return(
     <ListItem>
-      Started <TimeAgo date={ createdAt }/>
+      {owner.name} started <TimeAgo date={ createdAt }/>
       <Link to={ gameUrl }><RaisedButton label="Join/Continue" /></Link>
     </ListItem>
   )
 }
 
 const UnjoinableGame = (props) => {
-  const {_id, createdAt} = props
+  const {_id, createdAt, owner} = props
   const gameUrl = `/games/${_id}` // can be used later to spectate
   return(
     <ListItem>
-      Started <TimeAgo date={ createdAt }/>
+      <b>{owner.name}</b> started <TimeAgo date={ createdAt }/>
     </ListItem>
   )
 }
