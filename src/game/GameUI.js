@@ -11,6 +11,14 @@ import './GameUI.css';
 
 const NUM_CARDS = 4
 
+const Contitional = (props) => {
+  if(!!props.if) {
+    return props.children
+  } else {
+    return null
+  }
+}
+
 // Handles the interface for an entire game
 class GameUI extends PureComponent {
   static propTypes = {
@@ -65,21 +73,24 @@ class GameUI extends PureComponent {
     
     const gameEnded = (this.props.won || this.props.loss)
     const gameOutcomeView = gameEnded ? <GameOutcome didWin={!!this.props.won} /> : null
+    const DICE = "🎲"
     
     return (
       <div className="GameUI">
-        <div className="pickers-and-try">
-          { selectableSwatches }
-          <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
-            <span role="img" aria-label="Guess">🎲</span></button>
-        </div>
+        <Contitional if={ !gameEnded }>
+          <div className="pickers-and-try">
+            { selectableSwatches }
+            <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
+              <span role="img" aria-label="Guess">{ DICE }</span>
+            </button>
+          </div>
+        </Contitional>
         { gameOutcomeView }
         { guesses }
       </div>
     );
   }
 }
-
 
 
 const extractCurrentGame = (rs) => ({...rs.currentGame, currentUser: rs.currentUser})

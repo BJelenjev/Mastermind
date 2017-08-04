@@ -8,8 +8,8 @@ const Win = (props) => {
   return (
     <div className="GameOutcome Win">
     {
-        Array(Number(props.numSlots)).fill(null).map(() => {
-        return <div className='ico'><span role="img" aria-label="trophy">{ TROPHY }</span></div>
+        Array(Number(props.numSlots)).fill(null).map((_, i) => {
+        return <div key={ i } className='ico'><span role="img" aria-label="trophy">{ TROPHY }</span></div>
       })
     }
     </div>
