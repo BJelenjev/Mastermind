@@ -67,7 +67,7 @@ class GameUI extends PureComponent {
     // Guesses arrive in chronological order, and are also sorted as such.
     // We show the last guess right below the input, so reverse them after
     const guesses = this.props.guesses.map((guess, i) => {
-      return <Guess key={i} colors={ colors } {...guess} />
+      return <Guess key={i} colors={ colors } {...guess} currentUser={ this.props.currentUser } />
     }).reverse()
     
     const gameEnded = (this.props.gamePhase !== "inProgress")

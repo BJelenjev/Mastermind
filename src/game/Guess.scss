@@ -1,9 +1,10 @@
 .Guess {
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+  
   display: grid;
   grid-template-columns: auto 40px 40px 40px 40px 40px auto; /* 2 */
-
-  margin-top: 1rem;
-  margin-bottom: .5rem;
+  
   .swatch {
     width: 34px;
     height: 32px;
@@ -13,5 +14,12 @@
   
   .swatch:nth-child(1) {
     grid-column-start: 2;
+  }
+  
+  &.theirs {
+    background: rgb(240, 240, 240);
+    .swatch {
+      opacity: 0.85;
+    }
   }
 }

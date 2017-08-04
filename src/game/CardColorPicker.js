@@ -44,7 +44,7 @@ class CardColorPicker extends PureComponent {
     
     const swatches = this.props.colors.map((colorName, i) => {
       const topPos = (SWATCH_HEIGHT_STEP * (i-1)) + 'px' // off by one so that the default selection is not the default gray
-      const s =  {backgroundColor: colorName, position: 'absolute', top: topPos}
+      const s =  {backgroundColor: colorName, position: 'absolute', top: topPos, zIndex: 99999}
       const acceptSelectionFunction = (event) => this.acceptSelection(event, i)
       // use both onMouseUp and onClick to allow tap-select as well as drag-select (press-drag-release).
       // Later on we need to split "change current color" and "accept selection" into separate transitions so
