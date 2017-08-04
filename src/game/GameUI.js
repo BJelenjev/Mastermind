@@ -10,8 +10,9 @@ import GameOutcome from './GameOutcome'
 import './GameUI.css';
 
 const NUM_CARDS = 4
+const DICE = "🎲"
 
-const Contitional = (props) => {
+const Conditional = (props) => {
   if(!!props.if) {
     return props.children
   } else {
@@ -70,22 +71,25 @@ class GameUI extends PureComponent {
       return <Guess key={i} colors={ colors } {...guess} currentUser={ this.props.currentUser } />
     }).reverse()
     
+    const playerIds = this.props.players.map((p) => p._id)
+    const yourTurn = (this.props.turn % 2) === playerIds.indexOf(this.props.currentUser._id)
     const gameEnded = (this.props.gamePhase !== "inProgress")
-    const DICE = "🎲"
     
     return (
       <div className="GameUI">
-        <Contitional if={ !gameEnded }>
+        <Conditional if={ !gameEnded }>
           <div className="pickers-and-try">
             { selectableSwatches }
-            <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
-              <span role="img" aria-label="Guess">{ DICE }</span>
-            </button>
+            <Conditional if={ yourTurn }>
+              <button onClick={ this.submitGuess.bind(this) } disabled={ !doneSelecting } className="SubmitGuess">
+                <span role="img" aria-label="Guess">{ DICE }</span>
+              </button>
+            </Conditional>
           </div>
-        </Contitional>
-        <Contitional if= { gameEnded } >
+        </Conditional>
+        <Conditional if= { gameEnded } >
             <GameOutcome didWin={this.props.gamePhase === "playerWon"} />
-        </Contitional>
+        </Conditional>
         { guesses }
       </div>
     );
