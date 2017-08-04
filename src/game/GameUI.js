@@ -16,7 +16,7 @@ class GameUI extends PureComponent {
     _id: PropTypes.string,
     colors: PropTypes.array.required,
     submitGuess: PropTypes.function,
-    guesses: PropTypes.array
+    guesses: PropTypes.array,
   }
 
   constructor(props, context) {

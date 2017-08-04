@@ -8,12 +8,13 @@ export default (state = null, { type, payload } = {}) => {
   switch (type) {
     case USER_SIGNED_IN :
       // Save the user info (the JWT auth token is saved by feathers-authentication-client)
-      const {userId, email} = payload
-      window.localStorage.setItem(USER_INFO_KEY, JSON.stringify({userId, email}))
-      return Object.assign({}, {userId, email})
+      const {_id, email} = payload
+      window.localStorage.setItem(USER_INFO_KEY, JSON.stringify({_id, email}))
+      return Object.assign({}, {_id, email})
     case AUTH_ERROR :
-      // not handled actually...
-      return state
+      console.warn("Clearing the user info key due to AUTH_ERROR")
+      window.localStorage.removeItem(USER_INFO_KEY)
+      return null
     case USER_SIGNED_OUT :
       window.localStorage.removeItem(USER_INFO_KEY)
       return null

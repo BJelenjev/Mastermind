@@ -20,6 +20,7 @@ import onSignUp from './action-creators/sign-up'
 import onSignIn from './action-creators/sign-in'
 import onCreateGame from './action-creators/create-game'
 import subscribe from './action-creators/subscribe'
+import maintainAuth from './action-creators/maintain-auth'
 
 // Wire up signin
 const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
@@ -28,6 +29,7 @@ const BoundSignIn = connect(null, {onSignUp, onSignIn})(SignIn)
 
 class App extends Component {
   componentWillMount() {
+    this.props.maintainAuth()
     this.props.subscribe()
   }
   
@@ -49,7 +51,7 @@ class App extends Component {
   }
 }
 
-const BoundApp = connect(null, {subscribe})(App)
+const BoundApp = connect(null, {subscribe, maintainAuth})(App)
 
 class RouterWrapper extends Component {
   render() {
