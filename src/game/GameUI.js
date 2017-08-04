@@ -74,7 +74,8 @@ class GameUI extends PureComponent {
 }
 
 
-const extractCurrentGame = (reduxState) => reduxState.currentGame
+
+const extractCurrentGame = (rs) => ({...rs.currentGame, currentUser: rs.currentUser})
 const ConnectedGameUI = connect(extractCurrentGame, {submitGuess})(GameUI)
 
 export default GameUI
