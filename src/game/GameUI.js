@@ -26,8 +26,7 @@ class GameUI extends PureComponent {
     colors: PropTypes.array.required,
     submitGuess: PropTypes.function,
     guesses: PropTypes.array,
-    won:  PropTypes.boolean,
-    loss: PropTypes.boolean,
+    gamePhase: PropTypes.string,
   }
 
   constructor(props, context) {
@@ -71,7 +70,7 @@ class GameUI extends PureComponent {
       return <Guess key={i} colors={ colors } {...guess} />
     }).reverse()
     
-    const gameEnded = (this.props.won || this.props.loss)
+    const gameEnded = (this.props.gamePhase !== "inProgress")
     const DICE = "🎲"
     
     return (
@@ -85,7 +84,7 @@ class GameUI extends PureComponent {
           </div>
         </Contitional>
         <Contitional if= { gameEnded } >
-            <GameOutcome didWin={!!this.props.won} />
+            <GameOutcome didWin={this.props.gamePhase === "playerWon"} />
         </Contitional>
         { guesses }
       </div>
